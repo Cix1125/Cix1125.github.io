@@ -1,0 +1,5 @@
+*.bak
+_histor*
+__pycache__/
+.DS_Store
+Thumbs.db
