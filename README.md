@@ -1,5 +1,20 @@
 # FDE 作品集 · 使用说明
 
+## 🌐 线上地址（投递时发这个，不要发文件）
+
+| 页面 | 链接 |
+|---|---|
+| 作品集首页 | **https://cix1125.github.io/** |
+| 进销存 Demo | https://cix1125.github.io/demo/inventory.html |
+| 经销商订货 Demo | https://cix1125.github.io/demo/feed-dealer.html |
+| 源码仓库 | https://github.com/Cix1125/Cix1125.github.io |
+
+**改完内容怎么更新线上**：跑一次下面这段就行（这台机器 github.com:443 时通时不通，所以走 API 上传，不走 git push）。
+
+```powershell
+# 见本文件第九节「怎么更新线上」
+```
+
 **先做这一件事**：双击 `index.html`，或右键 → 打开方式 → 浏览器。能打开就说明可用。
 
 ---
