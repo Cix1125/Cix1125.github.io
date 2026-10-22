@@ -5,15 +5,16 @@
 | 页面 | 链接 |
 |---|---|
 | 作品集首页 | **https://cix1125.github.io/** |
-| 进销存 Demo | https://cix1125.github.io/demo/inventory.html |
+| **进销存系统（独立页）** | **https://cix1125.github.io/inventory/** |
+| **crm-cleaner（独立页）** | **https://cix1125.github.io/crm-cleaner/** |
+| 进销存 Demo（直接玩） | https://cix1125.github.io/demo/inventory.html |
 | 经销商订货 Demo | https://cix1125.github.io/demo/feed-dealer.html |
-| 源码仓库 | https://github.com/Cix1125/Cix1125.github.io |
+| crm-cleaner 源码 | https://github.com/Cix1125/crm-cleaner |
+| 本站源码仓库 | https://github.com/Cix1125/Cix1125.github.io |
 
-**改完内容怎么更新线上**：跑一次下面这段就行（这台机器 github.com:443 时通时不通，所以走 API 上传，不走 git push）。
+**两个项目的独立页**：`inventory\index.html` 与 `crm-cleaner\index.html` 各是一个独立单页，打开就是一个项目的介绍 + 演示入口 + 案例卡，**不依赖作品集首页**。发给谁只发一条链接，不用让人从首页再找。
 
-```powershell
-# 见本文件第九节「怎么更新线上」
-```
+**改完内容怎么更新线上**：在**本目录**跑 `python _部署.py`（约 1 分钟）。
 
 **先做这一件事**：双击 `index.html`，或右键 → 打开方式 → 浏览器。能打开就说明可用。
 
@@ -106,8 +107,8 @@ node _smoke-test.cjs inventory.html
 
 ## 五、投递前检查清单
 
-- [ ] 所有 `【】` 已替换
-- [ ] 手机上打开过链接，排版没乱
+- [ ] 页面上没有 `【】` 和 `[fill]` 残留
+- [ ] 手机上打开过链接（https://cix1125.github.io/），排版没乱
 - [ ] Demo 点得开、能新建订单、能发货
 - [ ] 四个案例的数据都能说清来源
 - [ ] 简历用的是这家公司的专用版（见 `秋招2027\00-使用说明.md` 第三节）
@@ -145,6 +146,23 @@ python cases\_生成PDF.py
 
 ---
 
-## 七、一句话定位（写简历、面试、发朋友圈都用同一句）
+## 七、怎么更新线上
+
+改完任何文件（`index.html`、demo、案例 md…），在**本目录**跑：
+
+```powershell
+python _部署.py
+```
+
+它会：取 Git 凭据 → 把目录下所有文件传上去 → 触发 GitHub Pages 重建 → 等构建完成 → 打印线上地址。**大约 1 分钟。**
+
+**为什么不用 `git push`**：这台机器 `github.com:443` 时通时不通（DNS 正常、TCP 常被重置），`git push` 十次有八次超时。`api.github.com` 一直是通的，所以脚本走 GitHub 的 API 上传。
+
+脚本跳过 `.git`、`_历史/`、`__pycache__`、`*.bak`，别的东西都会传上去 —— **别把不想公开的东西放这个目录**。
+
+---
+
+## 八、一句话定位（写简历、面试、发朋友圈都用同一句）
 
 > 英语专业出身，习惯用最少的工具解决具体的麻烦：先到现场问清问题，再动手做，做完盯到对方真的在用。
+
